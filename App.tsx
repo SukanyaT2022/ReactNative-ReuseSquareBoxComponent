@@ -8,7 +8,10 @@
 import React from 'react';
 import type {PropsWithChildren} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
+//we need this two import
 import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import {
   ScrollView,
   StatusBar,
@@ -25,28 +28,28 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import HomeScreen from './src/allScreensFolder/HomeScreen';
+import DetailScreen from './src/allScreensFolder/DetailScreen';
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
+
 export const screen = {
-home:'Home',
-// details:'Details',
-
+home: 'Home',
+details: 'Details'
 }
-
-
-
 function App(): React.JSX.Element {
 
 
   return (
 
     <NavigationContainer>
+
         <Stack.Navigator initialRouteName={screen.home}>
-      //options={{headerShown:false}} if donot want header on the screen
+      {/* //options={{headerShown:false}} if donot want header on the screen */}
         <Stack.Screen name={screen.home} component={HomeScreen} options={{headerShown:false}}/>
-        <Stack.Screen name={screen.details} component={DetailsScreen} />
+        <Stack.Screen name={screen.details} component={DetailScreen} />
       </Stack.Navigator>
-</View>  
+
       </NavigationContainer>
 
   );
